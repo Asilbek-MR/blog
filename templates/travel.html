@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Search {% endblock %}
+
+{% block content %}
+
+<main>
+	{% if results %}
+	{% for post in results %}
+	<section class="section">
+		<div class="container">
+			<div class="row ">
+				<div class="col-lg-10 mb-5 mb-lg-0">
+					<div class="row ">
+						<div class="col-md-12 mb-4">
+							
+							<article class="card article-card article-card-sm h-100">
+								<div class="d-flex flex-column flex-md-row" >
+								<a href="{{ post.get_absolute_url }}">
+									<div class="card-image p-2">
+										<div class="post-info"> <span class="text-uppercase">{{post.created|date:"F d, Y"}}</span>
+											<span class="text-uppercase">3 minutes read</span>
+										</div>
+										<img loading="lazy" decoding="async" src="{{post.image.url}}" alt="Post Thumbnail" class="w-100 search-main" >
+									</div>
+								</a>
+								<div class="card-body px-0 pb-0 p-2" >
+									<ul class="post-meta mb-2">
+										<li> <a href="#!">{{post.category}}</a>
+											
+										</li>
+									</ul>
+									<h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+									<p class="card-text">{{ post.content |slice:":120"|striptags  }}...</p>
+									<div class="content"> <a class="read-more-btn" href="{{ post.get_absolute_url }}">Read Full Article</a>
+									</div>
+								</div>
+							</div>
+							</article>
+							
+						</div>
+					</div>
+				</div>
+	</section>
+	{% endfor %}
+							
+	{% else %}
+	<main>
+		<section class="py-5">
+			<div class="container">
+			  <div class="row">
+				<div class="col-lg-10 mx-auto text-center">
+				  <img loading="lazy" decoding="async" src="{% static 'images/404.png' %}" alt="404" class="img-fluid mb-4" width="500" height="350">
+				  <p class="mb-4"> We couldn't find anything for <strong> - {{query}} </strong> </p>
+				  <a href="{% url 'index' %}" class="btn btn-outline-primary">Back To Home</a>
+				</div>
+			  </div>
+			</div>
+		  </section>
+		</main>
+	
+	{% endif %}
+</main>
+
+{% endblock %}
