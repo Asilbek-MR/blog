@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 	<meta name="description" content="This is meta description">
 	<meta name="author" content="Themefisher">
-  <title>{% block title %} Reporter - HTML Blog Template {% endblock %}</title>
+  <title>{% block title %} Reporter - Blog  {% endblock %}</title>
   
 	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 	<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
@@ -163,7 +163,7 @@
           <div class="widget-body">
             <img loading="lazy" decoding="async" src="{% static 'images/author.jpg' %}" alt="About Me" class="w-100 author-thumb-sm d-block">
             <h2 class="widget-title my-3">Hootan Safiyari</h2>
-            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="about.html" class="btn btn-sm btn-outline-primary">Know
+            <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter, Developer and Story teller. Working as a Content writter at CoolTech Agency. Quam nihil …</p> <a href="{% url 'about' %}" class="btn btn-sm btn-outline-primary">Know
               More</a>
           </div>
         </div>
@@ -244,20 +244,20 @@
   <div class="container section">
     <div class="row">
       <div class="col-lg-10 mx-auto text-center">
-        <a class="d-inline-block mb-4 pb-2" href="index.html">
+        <a class="d-inline-block mb-4 pb-2" href="/">
           <img loading="prelaod" decoding="async" class="img-fluid" src="{% static 'images/logo-white.png' %}" alt="Reporter Hugo">
         </a>
         <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
           <li class="nav-item my-0"> <a class="nav-link" href="{% url 'about' %}">About</a></li>
-          {% comment %} <li class="nav-item my-0"> <a class="nav-link" href="{% url 'article' %}">Elements</a></li> {% endcomment %}
+          <li class="nav-item my-0"> <a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="{% url 'provide' %}">Privacy Policy</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="{% url 'terms' %}">Terms Conditions</a></li>
-          <li class="nav-item my-0"> <a class="nav-link" href="{% url '404' %}">404 Page</a></li>
+          {% comment %} <li class="nav-item my-0"> <a class="nav-link" href="{% url '404' %}">404 Page</a></li> {% endcomment %}
         </ul>
       </div>
     </div>
   </div>
-  <div class="copyright bg-dark content">Designed &amp; Developed By <a href="https://themefisher.com/">Themefisher</a></div>
+  <div class="copyright bg-dark content">Created By Asilbek B.  Designed <a href="https://themefisher.com/">Themefisher </a></div>
 </footer>
 
 
