@@ -5,6 +5,20 @@ import bleach
 from .forms import SearchForm
 from django.http import Http404
 
+from django.http import JsonResponse
+
+
+# def handler404(request, exception, template_name="404.html"):
+#     # response = render_to_response(template_name)
+#     # response.status_code = 404
+#     return response
+
+def handler500(request, *args, **argv):
+    return render(request, '500.html', status=500)
+
+def custom404(request, exception=None):
+    return render(request, '404.html', status=500)
+
 def index(request):
     try:
         posts = Post.objects.filter(main_article=False).order_by('-created')
@@ -20,16 +34,13 @@ def index(request):
         return render(request,'404.html',status=404)
 
 
-def page_not_found(request,exception):
-    return render(request,'404.html',status=404)
-
 def about(request):
     return render(request,'about.html')
 
-class PostDeatilView(DetailView):
-    model = Post
-    template_name = 'article.html'
-    context_object_name = 'post'
+def article(request,slug):
+    slug = Post.objects.filter(slug=slug).first()
+    category = Category.objects.all()
+    return render(request,'article.html',{"post":slug,"category":category})
 
 def contact(request):
     return render(request,'contact.html')
@@ -58,6 +69,6 @@ def post_category(request,pk):
     return render(request,'travel.html', {"results":results,"count":results.count()})
    
     
-def notfound(request):
+def not_found(request):
     return render(request,'404.html')
 
