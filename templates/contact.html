@@ -28,15 +28,13 @@
 					</div>
 				</div>
 				<div class="col-lg-6 mt-4 mt-lg-0">
-					<form method="POST" action="#!" class="row">
+					<form method="POST" class="row">
+						{% csrf_token %}
 						<div class="col-md-6">
 							<input type="text" class="form-control mb-4" placeholder="Name" name="name" id="name">
 						</div>
 						<div class="col-md-6">
 							<input type="email" class="form-control mb-4" placeholder="Email" name="email" id="email">
-						</div>
-						<div class="col-12">
-							<input type="text" class="form-control mb-4" placeholder="Subject" name="subject" id="subject">
 						</div>
 						<div class="col-12">
 							<textarea name="message" id="message" class="form-control mb-4" placeholder="Type You Message Here" rows="5"></textarea>

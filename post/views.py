@@ -1,11 +1,7 @@
-from django.shortcuts import render,get_object_or_404
-from .models import Post,Category
-from django.views.generic import DetailView,ListView,DeleteView,UpdateView
+from django.shortcuts import render,get_object_or_404,redirect
+from .models import Post,Category,Contact
 import bleach
-from .forms import SearchForm
 from django.http import Http404
-
-from django.http import JsonResponse
 
 
 # def handler404(request, exception, template_name="404.html"):
@@ -43,13 +39,22 @@ def article(request,slug):
     return render(request,'article.html',{"post":slug,"category":category})
 
 def contact(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        gmail = request.POST.get('email')
+        body = request.POST.get('message')
+        contact_=Contact.objects.create(name=name,gmail=gmail,comment=body)
+        contact_.save()
+        return redirect('/')
+        
     return render(request,'contact.html')
 
 def provide(request):
     return render(request,'privacy-policy.html')
 
-def terms(request):
-    return render(request,'terms-conditions.html')
+def feedback(request):
+    contacts = Contact.objects.all().order_by('-created_at')
+    return render(request,'feedback.html',{"contacts":contacts})
 
 def post_search(request):
     search = request.GET.get('search')
@@ -57,15 +62,12 @@ def post_search(request):
     if search:
         results = Post.objects.filter(title__icontains=search)
         return render(request, 'travel.html',{"results":results,"query":search})
-    
     if categorye:
         categoryes = Post.objects.filter(category__content__icontains=categorye)
         return render(request, 'travel.html',{"query":categoryes,"results":categoryes})
 
 def post_category(request,pk):
-    
     results = Post.objects.filter(category__id=pk)
-
     return render(request,'travel.html', {"results":results,"count":results.count()})
    
     

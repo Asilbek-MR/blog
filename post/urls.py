@@ -11,7 +11,7 @@ urlpatterns = [
     path('article/<slug:slug>/',views.article, name='article'),
     path('contact/',views.contact, name='contact'),
     path('provide/',views.provide, name='provide'),
-    path('terms/',views.terms, name='terms'),
+    path('feedback/',views.feedback, name='feedback'),
 ]
 
 # handler404 = views.test

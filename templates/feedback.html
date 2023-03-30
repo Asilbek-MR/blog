@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} Terms - Conditions {% endblock %}
+
+{% block content %}
+
+
+<main>
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<div class="breadcrumbs mb-4"> <a href="/">Home</a>
+						<span class="mx-1">/</span>  <a href="https://reporter-hugo.netlify.app/terms-conditions">FeedBack</a>
+					</div>
+				</div>
+				<div class="col-lg-8 mx-auto mb-5 mb-lg-0">
+					<h1 class="mb-4">FeedBack</h1>
+					<div class="content">
+						{% for conatct in contacts %}
+						<h4 id="responsibility-of-contributors">Username-  {{conatct.name}} | Email- {{conatct.gmail}}</h4>
+						{% comment %} <h4 id="responsibility-of-contributors">FeedBack - </h4> {% endcomment %}
+						<p> FeedBack </p>
+
+						<p> {{conatct.comment}} | {{conatct.created_at}} </h4></p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+{% endblock %}
