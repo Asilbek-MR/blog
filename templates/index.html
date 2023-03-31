@@ -83,7 +83,7 @@
                     <li> <a href="#!">{{ posts_m.category }}</a>
                     </li>
                   </ul>
-                  <h2 class="h1"><a class="post-title" href="{{ posts_m.get_absolute_url }}">{{ posts_m.title }}</a></h2>
+                  <h2 class="h1"><a class="post-title" href="{{ posts_m.get_absolute_url }}">{{ posts_m.title |slice:":40"|striptags }}...</a></h2>
                   <p class="card-text">{{ posts_m.content |slice:":120"|striptags  }}...</p>
                   <div class="content"> <a class="read-more-btn" href="{{ posts_m.get_absolute_url }}">Read Full Article</a>
                   </div>
@@ -109,7 +109,7 @@
                     <li> <a href="#!">{{ post.category }}</a>
                     </li>
                   </ul>
-                  <h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+                  <h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title |slice:":45"|striptags}}...</a></h2>
                   <p class="card-text">{{ post.content |slice:":120"|striptags  }}...</p>
                   <div class="content"> <a class="read-more-btn" href="{{ post.get_absolute_url }}">Read Full Article</a>
                   </div>

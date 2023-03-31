@@ -61,14 +61,14 @@ def post_search(request):
     categorye = request.GET.get('category')
     if search:
         results = Post.objects.filter(title__icontains=search)
-        return render(request, 'travel.html',{"results":results,"query":search})
+        return render(request, 'search.html',{"results":results,"query":search})
     if categorye:
         categoryes = Post.objects.filter(category__content__icontains=categorye)
-        return render(request, 'travel.html',{"query":categoryes,"results":categoryes})
+        return render(request, 'search.html',{"query":categoryes,"results":categoryes})
 
 def post_category(request,pk):
     results = Post.objects.filter(category__id=pk)
-    return render(request,'travel.html', {"results":results,"count":results.count()})
+    return render(request,'search.html', {"results":results,"count":results.count()})
    
     
 def not_found(request):
