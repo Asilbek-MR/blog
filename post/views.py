@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Post,Category,Contact
+from .models import Post,Category,Contact,Postcount
 import bleach
 from django.http import Http404
 
