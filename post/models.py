@@ -18,7 +18,11 @@ class Category(models.Model):
         return posts.count()
 
 class Postcount(models.Model):
-    count = models.DecimalField(max_digits=100,decimal_places=5)
+    # count = models.CharField(max_length=12)
+    @property
+    def read_count(self):
+        counts = self.read_count + 1
+        return counts
 
 class Post(models.Model):
     title = models.CharField(max_length=255)

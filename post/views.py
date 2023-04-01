@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Post,Category,Contact,Postcount
+from .models import Post,Category,Contact
 import bleach
 from django.http import Http404
 
@@ -34,10 +34,17 @@ def about(request):
     return render(request,'about.html')
 
 def article(request,slug):
+    # if request.medthod == 'GET':
+    count = count + 1
     slug = Post.objects.filter(slug=slug).first()
     category = Category.objects.all()
-    return render(request,'article.html',{"post":slug,"category":category})
-
+    context = {
+        "post":slug,
+        "category":category,
+        "count":count}
+    return render(request,'article.html',context)
+    # else:
+    #     return render(request,'404.html',status=404)
 def contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
