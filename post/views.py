@@ -19,8 +19,10 @@ def index(request):
     try:
         posts = Post.objects.filter(main_article=False).order_by('-created')
         posts_m=Post.objects.filter(main_article=True).last()
+        global_news = Post.objects.filter(global_news=True).last()
         category = Category.objects.all()
         context = {
+            "global_news":global_news,
             "posts":posts,
             "category":category,
             'posts_m':posts_m
@@ -30,18 +32,17 @@ def index(request):
         return render(request,'404.html',status=404)
 
 
-def about(request):
+def global_news(request):
     return render(request,'about.html')
 
 def article(request,slug):
-    # if request.medthod == 'GET':
-    count = count + 1
     slug = Post.objects.filter(slug=slug).first()
+    global_news = Post.objects.filter(global_news=True).last()
     category = Category.objects.all()
     context = {
+        "global_news":global_news,
         "post":slug,
-        "category":category,
-        "count":count}
+        "category":category}
     return render(request,'article.html',context)
     # else:
     #     return render(request,'404.html',status=404)
