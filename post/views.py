@@ -18,14 +18,17 @@ def custom404(request, exception=None):
 def index(request):
     try:
         posts = Post.objects.filter(main_article=False).order_by('-created')
+        post_recom = Post.objects.filter(global_news=True)
         posts_m=Post.objects.filter(main_article=True).last()
-        global_news = Post.objects.filter(global_news=True).last()
         category = Category.objects.all()
         context = {
-            "global_news":global_news,
+            "global_news":post_recom.first(),
             "posts":posts,
             "category":category,
-            'posts_m':posts_m
+            'posts_m':posts_m,
+            "post_recom":post_recom[1:2],
+            "post_recom_list":post_recom[2:6],
+
         }
         return render(request,'index.html',context)
     except Http404:

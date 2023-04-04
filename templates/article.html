@@ -24,7 +24,7 @@
 						
 						<h1 class="my-3">{{ post.title }}</h1>
 						<ul class="post-meta mb-4">
-							<li> <a href="">{{ post.category }}</a>
+							<li> <a href="#!">{{ post.category }}</a>
 							</li>
 						</ul>
 						<div class="content text-left">
@@ -47,10 +47,12 @@
       <div class="col-lg-12">
         <div class="widget">
           <div class="widget-body">
+            <a href="{{ global_news.get_absolute_url }}">
             <img loading="lazy" decoding="async" src="{{global_news.image.url}}" alt="About Me" class="w-100 author-thumb-sm d-block">
             <h2 class="widget-title my-3">{{global_news.title |slice:":45"|striptags|title}}</h2>
             <p class="mb-3 pb-2">{{ global_news.content |slice:":120"|striptags|title  }}…</p> <a href="{{ global_news.get_absolute_url }}" class="btn btn-sm btn-outline-primary">Know
               More</a>
+            </a>
           </div>
         </div>
       </div>
