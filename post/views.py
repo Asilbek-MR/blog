@@ -41,11 +41,14 @@ def global_news(request):
 def article(request,slug):
     slug = Post.objects.filter(slug=slug).first()
     global_news = Post.objects.filter(global_news=True).last()
+    post_recom = Post.objects.filter(global_news=True)
     category = Category.objects.all()
     context = {
         "global_news":global_news,
         "post":slug,
-        "category":category}
+        "category":category,
+        "post_recom":post_recom[1:2],
+        "post_recom_list":post_recom[2:6],}
     return render(request,'article.html',context)
     # else:
     #     return render(request,'404.html',status=404)
