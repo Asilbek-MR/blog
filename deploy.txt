@@ -1,0 +1,38 @@
+/etc/nginx/conf.d/blog.conf
+server {
+    listen 80;
+    server_name 13.51.201.97;
+    location /static {
+    root /home/ubuntu/blog;
+    }
+    location / {
+    include proxy_params;
+    proxy_pass http://127.0.0.1:8000;
+    }
+}
+##################################################
+/etc/systemd/system/blog.service
+[Unit]
+Description=Gunicorn instance to serve My App
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/blog
+ExecStart=/home/ubuntu/blog/venv/bin/gunicorn  --bind  0.0.0.0:8000  config.wsgi:application
+[Install]
+WantedBy=multi-user.target
+#################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
