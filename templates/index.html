@@ -1,6 +1,6 @@
+{% load static %} 
+{% load unescape_quotes %}
 <!DOCTYPE html>
- {% load static %} 
-
 <html lang="en-us">
 
 <head>
@@ -34,7 +34,7 @@
 </head>
 
 <body>
-
+  
 <header class="navigation">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light px-0">
@@ -84,7 +84,7 @@
                     </li>
                   </ul>
                   <h2 class="h1"><a class="post-title" href="{{ posts_m.get_absolute_url }}">{{ posts_m.title |slice:":40"|striptags|title }}...</a></h2>
-                  <p class="card-text">{{ posts_m.content |slice:":180"|striptags|safe  }}...</p>
+                  <p class="card-text">{{ posts_m.content |unescape_quotes |slice:":180"|striptags |safe  }}...</p>
                   <div class="content"> <a class="read-more-btn" href="{{ posts_m.get_absolute_url }}">Read Full Article</a>
                   </div>
                 </div>
@@ -109,8 +109,8 @@
                     <li> <a href="#!">{{ post.category }}</a>
                     </li>
                   </ul>
-                  <h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title |slice:":45"|striptags|title}}...</a></h2>
-                  <p class="card-text">{{ post.content |slice:":120"|striptags|title  }}...</p>
+                  <h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title |slice:":45"|striptags |title}}...</a></h2>
+                  <p class="card-text">{{ post.content |unescape_quotes |slice:":120"|striptags |safe   }}...</p>
                   <div class="content"> <a class="read-more-btn" href="{{ post.get_absolute_url }}">Read Full Article</a>
                   </div>
                 </div>
@@ -163,8 +163,8 @@
           <div class="widget-body">
             <a href="{{ global_news.get_absolute_url }}">
             <img loading="lazy" decoding="async" src="{{global_news.image.url}}" alt="About Me" class="w-100 author-thumb-sm d-block">
-            <h2 class="widget-title my-3">{{global_news.title |slice:":45"|striptags|title}}...</h2>
-            <p class="mb-3 pb-2">{{ global_news.content |slice:":120"|striptags }}…</p> <a href="{{ global_news.get_absolute_url }}" class="btn btn-sm btn-outline-primary">Know
+            <h2 class="widget-title my-3">{{global_news.title |slice:":45"|striptags }}...</h2>
+            <p class="mb-3 pb-2">{{ global_news.content |unescape_quotes |slice:":250"|striptags |safe }}…</p> <a href="{{ global_news.get_absolute_url }}" class="btn btn-sm btn-outline-primary">Know
               More</a>
             </a>
           </div>
@@ -184,8 +184,8 @@
                 </div>
                 <div class="card-body px-0 pb-1">
                   <h3><a class="post-title post-title-sm"
-                      href="{{ post.get_absolute_url }}">{{post.title |slice:":45"|striptags|title}}...</a></h3>
-                  <p class="card-text">{{post.content |slice:":65"|striptags}}...</p>
+                      href="{{ post.get_absolute_url }}">{{post.title |unescape_quotes |slice:":45"|striptags|title}}...</a></h3>
+                  <p class="card-text">{{post.content |unescape_quotes |slice:":65" |striptags |safe}}...</p>
                   <div class="content"> <a class="read-more-btn" href="{{ post.get_absolute_url }}">Read Full Article</a>
                   </div>
                   {% endfor %}
@@ -195,8 +195,8 @@
               <a class="media align-items-center" href="{{ post.get_absolute_url }}">
                 <img loading="lazy" decoding="async" src="{{post.image.url}}" alt="Post Thumbnail" class="w-100">
                 <div class="media-body ml-3">
-                  <h3 style="margin-top:-5px">{{post.title |slice:":50"|striptags|title}}</h3>
-                  <p class="mb-0 small">{{post.content |slice:":60"|striptags|title}}</p>
+                  <h3 style="margin-top:-5px">{{post.title |unescape_quotes |slice:":50"|striptags|title |safe}}</h3>
+                  <p class="mb-0 small">{{post.content |unescape_quotes |slice:":60"|striptags |safe}}</p>
                 </div>
               </a>
               {% endfor %}
