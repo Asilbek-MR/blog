@@ -31,7 +31,7 @@
 											
 										</li>
 									</ul>
-									<h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+									<h2><a class="post-title" href="{{ post.get_absolute_url }}">{{post.title |unescape_quotes |slice:":40"|striptags |safe}}...</a></h2>
 									<p class="card-text">{{ post.content |unescape_quotes |slice:":120"|striptags |safe  }}...</p>
 									<div class="content"> <a class="read-more-btn" href="{{ post.get_absolute_url }}">Read Full Article</a>
 									</div>
