@@ -83,7 +83,13 @@ def post_search(request):
 def post_category(request,pk):
     results = Post.objects.filter(category__id=pk)
     return render(request,'search.html', {"results":results,"count":results.count()})
-   
+
+def login(request):
+    return render(request,'login.html')
+
+def register(request):
+    return render(request,'register.html') 
+
     
 def not_found(request):
     return render(request,'404.html')
