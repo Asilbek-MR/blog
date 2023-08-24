@@ -13,6 +13,7 @@ urlpatterns = [
     path('register/',views.register, name='register'),
     path('provide/',views.provide, name='provide'),
     path('feedback/',views.feedback, name='feedback'),
+    path('ipaddress/',views.ipaddress, name='ipaddress'),
     path('404/',views.not_found, name='404'),
 ]
 

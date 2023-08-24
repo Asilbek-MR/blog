@@ -31,9 +31,17 @@
 	<!-- # Main Style Sheet -->
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'style.css.map' %}">
+
+  <style>
+      html{
+        min-height: 100vh;
+        display: flex;
+      }
+  </style>
+
 </head>
 
-<body>
+<body class="flex-grow-1 d-flex flex-column">
   
 <header class="navigation">
   <div class="container">
@@ -70,7 +78,7 @@
   </div>
 </header>
 {% block content %}
-<main>
+<main class="flex-grow-1">
    <section class="section">
     <div class="container">
       <div class="row no-gutters-lg">
@@ -251,6 +259,7 @@
           <li class="nav-item my-0"> <a class="nav-link" href="{% url 'contact' %}">Contact & Feedback </a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="{% url 'provide' %}">Privacy Policy</a></li>
           <li class="nav-item my-0"> <a class="nav-link" href="{% url 'feedback' %}">Feedbacks Users</a></li>
+          <li class="nav-item my-0"> <a class="nav-link" href="{% url 'ipaddress' %}">What my ip address</a></li>
           {% comment %} <li class="nav-item my-0"> <a class="nav-link" href="{% url '404' %}">404 Page</a></li> {% endcomment %}
         </ul>
       </div>
