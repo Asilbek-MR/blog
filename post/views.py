@@ -1,7 +1,8 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Post,Category,Contact
-import bleach
 from django.http import Http404
+import socket
+import requests
 
 
 # def handler404(request, exception, template_name="404.html"):
@@ -69,6 +70,11 @@ def provide(request):
 def feedback(request):
     contacts = Contact.objects.all().order_by('-created_at')
     return render(request,'feedback.html',{"contacts":contacts})
+
+def ipaddress(request):
+    hostname = socket.gethostname()
+    ip_address = socket.gethostbyname(hostname)
+    return render(request,'ipaddres.html',{"ip_address":ip_address})
 
 def post_search(request):
     search = request.GET.get('search')

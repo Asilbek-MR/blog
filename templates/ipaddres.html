@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %} IP Address {% endblock %}
+
+{% block content %}
+
+
+<main class="flex-grow-1">
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mx-auto">
+					<div class="breadcrumbs mb-4"> <a href="/">Home</a>
+						<span class="mx-1">/</span>  <a href="https://reporter-hugo.netlify.app/terms-conditions">What my IP address</a>
+					</div>
+				</div>
+				<div class="col-lg-8 mx-auto mb-5 mb-lg-0 px-0 border rounded" >
+					<h1 class="border-bottom p-2" >
+						<span>Your IP address:</span>
+					</h1>
+					<h2 class="p-2">
+						<span>{{ ip_address }}</span>
+					</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<div>
+
+
+{% endblock %}
