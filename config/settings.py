@@ -26,9 +26,9 @@ SECRET_KEY = 'django-insecure-u77lj5j4+!4kl#$bei158&1=!ytbn%snbfefkx+5j=mr1-do*q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['16.170.242.139','localhost','bytebytedo.com']
-#ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ['https://bytebytedo.com']
+ALLOWED_HOSTS = ['*']
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,8 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'post.apps.PostConfig',
     'ckeditor',
-    #'django.contrib.staticfiles',
-   # 'whitenoise.runserver_nostatic',
 ]
 
 SITE_ID = 1
@@ -65,8 +63,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #"django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -111,9 +107,6 @@ DATABASES = {
 #    }
 # }
 
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
 # Password validation
