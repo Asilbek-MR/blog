@@ -4,7 +4,7 @@ from ckeditor.fields import RichTextField
 from django.urls import reverse
 
 class Category(models.Model):
-    CATEGORY_CHOICES=(('healthy','HEALTHY'),('image','photo'),('programming','PROGRAMMING'),('productive','PRODUCTIVE'),('desigin','DESIGIN'),('self_improvement','Self_Improvement'))
+    CATEGORY_CHOICES=(('healthy','HEALTHY'),('solution','Solution'),('programming','PROGRAMMING'),('productive','PRODUCTIVE'),('desigin','DESIGIN'),('self_improvement','Self_Improvement'))
     title = models.CharField(max_length=255)
     content = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
 
